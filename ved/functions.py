@@ -32,4 +32,4 @@ def send_order_verification(order_detail):
                      ),
                      [settings.EMAIL_SEND_FROM],
                      [order_detail.email, settings.EMAIL_SEND_TO]
-                     )
+    )

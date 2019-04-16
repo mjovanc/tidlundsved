@@ -3,7 +3,6 @@ from .choices import *
 
 
 class Order(models.Model):
-
     PAYMENT_METHODS = (
         ('Kontant', 'Kontant'),
         ('Swish', 'Swish'),
@@ -42,3 +41,10 @@ class Offer(models.Model):
     class Meta:
         verbose_name = 'Erbjudande'
         verbose_name_plural = 'Erbjudanden'
+
+
+class Product(models.Model):
+    title = models.CharField('Produktnamn', max_length=100)
+    desc = models.TextField('Beskrivning', max_length=1000, blank=True)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
+    category = models.CharField('Produkttyp', max_length=50, choices=PRODUCT_TYPE, default=1)

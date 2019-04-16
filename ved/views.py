@@ -2,6 +2,7 @@ from django.template.response import TemplateResponse
 from django.conf import settings
 from .forms import *
 from .functions import send_email, send_order_verification
+from .models import Product
 
 
 def index(request):
@@ -42,10 +43,14 @@ def blandat_lovtrad(request):
             send_order_verification(obj)
 
             return TemplateResponse(request, 'various/success.html', {'ORDER_ID': obj.pk})
-            #return redirect('success')
     else:
         form = OrderFormLovTrad()
-    return TemplateResponse(request, 'ved/blandat_lovtrad.html', {'form': form})
+    return TemplateResponse(request, 'ved/blandat_lovtrad.html',
+        {
+            'form': form,
+            'wood': Product.objects.all().filter(category='Blandat lövträd')
+        }
+    )
 
 
 def bjorkved(request):
@@ -60,10 +65,14 @@ def bjorkved(request):
 
             return TemplateResponse(request, 'various/success.html',
                                     {'ORDER_ID': obj.pk})
-            #return redirect('success')
     else:
         form = OrderFormBjorkved()
-    return TemplateResponse(request, 'ved/bjorkved.html', {'form': form})
+    return TemplateResponse(request, 'ved/bjorkved.html', 
+        {
+            'form': form,
+            'wood': Product.objects.all().filter(category='Björkved')
+        }
+    )
 
 
 def bokved(request):
@@ -78,10 +87,14 @@ def bokved(request):
 
             return TemplateResponse(request, 'various/success.html',
                                     {'ORDER_ID': obj.pk})
-            #return redirect('success')
     else:
         form = OrderFormBokved()
-    return TemplateResponse(request, 'ved/bokved.html', {'form': form})
+    return TemplateResponse(request, 'ved/bokved.html', 
+        {
+            'form': form,
+            'wood': Product.objects.all().filter(category='Bokved')
+        }
+    )
 
 
 def askved(request):
@@ -96,10 +109,14 @@ def askved(request):
 
             return TemplateResponse(request, 'various/success.html',
                                     {'ORDER_ID': obj.pk})
-            #return redirect('success')
     else:
         form = OrderFormAskved()
-    return TemplateResponse(request, 'ved/askved.html', {'form': form})
+    return TemplateResponse(request, 'ved/askved.html', 
+        {
+            'form': form,
+            'wood': Product.objects.all().filter(category='Askved')
+        }
+    )
 
 
 def ovrigt(request):
@@ -114,10 +131,14 @@ def ovrigt(request):
 
             return TemplateResponse(request, 'various/success.html',
                                     {'ORDER_ID': obj.pk})
-            #return redirect('success')
     else:
         form = OrderFormOther()
-    return TemplateResponse(request, 'ved/ovrigt.html', {'form': form})
+    return TemplateResponse(request, 'ved/ovrigt.html',  
+        {
+            'form': form,
+            'wood': Product.objects.all().filter(category='Övrigt')
+        }
+    )
 
 
 def success(request):

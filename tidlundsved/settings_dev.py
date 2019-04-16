@@ -12,4 +12,5 @@ DATABASES = {
     }
 }
 
+EMAIL_SEND_TO = 'marcuscvjeticanin@gmail.com'
 EMAIL_SEND_FROM = 'noreply@tidlundsved.se'

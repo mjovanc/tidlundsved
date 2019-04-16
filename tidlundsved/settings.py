@@ -93,3 +93,8 @@ STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
 DEFAULT_FROM_EMAIL = 'noreply@tidlundsved.se'
+
+ANYMAIL = {
+    'MAILGUN_API_KEY': ANYMAIL_KEY,
+    'MAILGUN_SENDER_DOMAIN': 'mail.tidlundsved.se',
+}

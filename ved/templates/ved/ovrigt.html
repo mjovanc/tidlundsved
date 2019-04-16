@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block site_title_meta %} - Övrigt{% endblock %}
+{% block page_title %}Övrigt{% endblock %}
+
+{% block page_media %}
+<img src="{% static 'img/ved/bestalla/ovrigt.jpg' %}" alt="övrigt" class="img-thumbnail">
+<div class="prices">
+    <h4>Priser</h4>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" style="border:none">Pellets - ring/maila för prisuppgift</li>
+        <li class="list-group-item">Briketter - ring/maila för prisuppgift</li>
+        <li class="list-group-item">Huggkubbe 60-70cm (st) - 100kr</li>
+        <li class="list-group-item">Spån (kubik) - 90kr (bra att strö med)</li>
+    </ul>
+
+</div>
+{% endblock %}
+
+{% block page_content %}
+
+<form method="post" novalidate>
+  {% csrf_token %}
+
+  {% for field in form.visible_fields %}
+    <div class="form-group">
+        {% if field.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ field.errors }}
+        </div>
+        {% endif %}
+      {{ field.label_tag }}
+      {{ field }}
+      {% if field.help_text %}
+        <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <button type="submit" class="btn btn-primary">Beställ</button>
+</form>
+
+{% endblock %}

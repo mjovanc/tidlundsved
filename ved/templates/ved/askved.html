@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block site_title_meta %} - Askved{% endblock %}
+{% block page_title %}Askved{% endblock %}
+
+{% block page_media %}
+<img src="{% static 'img/ved/bestalla/askved.png' %}" alt="askved" class="img-thumbnail">
+<div class="prices">
+    <h4>Priser</h4>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" style="border:none">Löst nykluven (kubik) - 510kr</li>
+        <li class="list-group-item">Löst torr (kubik) - 600kr</li>
+        <li class="list-group-item">Torr på pall (kubik) - 650kr</li>
+        <li class="list-group-item">40 liters säck (st) - 48kr</li>
+        <li class="list-group-item">Vid större mängd småsäckar ring alt maila angående pris.</li>
+    </ul>
+
+</div>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="alert alert-warning" role="alert">
+  Askved är nu tillfälligt slut!
+</div>
+
+<form method="post" novalidate>
+  {% csrf_token %}
+
+  {% for field in form.visible_fields %}
+    <div class="form-group">
+      {{ field.label_tag }}
+      {{ field }}
+      {% if field.help_text %}
+        <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <button type="submit" class="btn btn-primary">Beställ</button>
+</form>
+
+{% endblock %}

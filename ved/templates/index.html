@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{{ SITE_TITLE }}{% block site_title_meta %}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+        <div class="sticky-top">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="{% url 'index' %}">
+                  <img src="{% static 'img/tidlundsved_logo.png' %}" height="30" alt="">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <ul class="navbar-nav">
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Ved
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{% url 'blandat_lovtrad' %}">Blandat lövträd</a>
+                            <a class="dropdown-item" href="{% url 'bjorkved' %}">Björkved</a>
+                            <a class="dropdown-item" href="{% url 'bokved' %}">Bokved</a>
+                            <a class="dropdown-item" href="{% url 'askved' %}">Askved</a>
+                            <a class="dropdown-item" href="{% url 'ovrigt' %}">Övrigt</a>
+                        </div>
+                      </li>
+
+                      {% if request.path == "/om-oss/" %}
+                      <li class="nav-item active">
+                      {% else %}
+                      <li class="nav-item">
+                      {% endif %}
+                        <a class="nav-item nav-link" href="{% url 'about' %}">Om oss</a>
+                      </li>
+
+                      {% if request.path == "/kontakt/" %}
+                      <li class="nav-item active">
+                      {% else %}
+                      <li class="nav-item">
+                      {% endif %}
+                        <a class="nav-item nav-link" href="{% url 'contact' %}">Kontakt</a>
+                      </li>
+
+                    </ul>
+              </div>
+                <span class="offer-text text-right">
+                      {% for o in offers %}
+                      {{ o.name }}
+                      {% endfor %}
+                  </span>
+            </nav>
+
+        </div>
+
+    </head>
+    <body>
+    {% if request.path == "/" %}
+    <img src="{% static 'img/firewood.jpg' %}" class="img-fluid firewood-img" alt="Responsive image">
+    {% endif %}
+
+        <div class="container">
+            {% if request.path == "/" %}
+
+            <div class="firewood-types">
+
+                <figure class="figure">
+                    <a href="{% url 'bokved' %}">
+                        <img src="{% static 'img/ved/bokved.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption figure-firewood-caption">Bok</figcaption>
+                    </a>
+                </figure>
+
+                <figure class="figure">
+                    <a href="{% url 'askved' %}">
+                        <img src="{% static 'img/ved/ask.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption figure-firewood-caption">Ask</figcaption>
+                    </a>
+                </figure>
+
+                <figure class="figure">
+                    <a href="{% url 'bjorkved' %}">
+                        <img src="{% static 'img/ved/bjork.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption figure-firewood-caption">Björk</figcaption>
+                    </a>
+                </figure>
+
+                <figure class="figure">
+                    <a href="{% url 'blandat_lovtrad' %}">
+                        <img src="{% static 'img/ved/blandved.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption figure-firewood-caption">Blandved</figcaption>
+                    </a>
+                </figure>
+
+            </div>
+
+            {% else %}
+            <h1 class="text-center page-title">{% block page_title %}{% endblock %}</h1>
+
+            {% block page_content_wide %}{% endblock %}
+
+            <div class="row">
+                <div class="col">
+                  {% block page_media %}{% endblock %}
+                </div>
+                <div class="col">
+                  {% block page_content %}{% endblock %}
+                </div>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    </body>
+<footer>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light navbar-footer">
+        <div class="container">
+                <div class="col-8">
+                    <a class="navbar-brand footer-navbar-text-created-by float-left" href="https://www.linkedin.com/in/marcuscvjeticanin/">Skapad av Marcus Cvjeticanin</a>
+                </div>
+                <div class="col-4 col-extra" style="display:none">
+                    <div class="info-text">
+                        <span class="navbar-text footer-navbar-text float-center">
+                            Drivs av:
+                        </span>
+                        <a class="navbar-brand float-right" href="https://www.python.org/">
+                            <img src="{% static 'img/python.png' %}" width="30" height="30" alt="Python">
+                        </a>
+                        <a class="navbar-brand float-right" href="https://www.djangoproject.com/">
+                            <img src="{% static 'img/django.png' %}" height="30" alt="Django">
+                        </a>
+                    </div>
+                </div>
+            </div>
+</nav>
+</footer>
+</html>

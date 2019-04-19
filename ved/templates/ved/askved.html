@@ -1,30 +1,23 @@
 {% extends "index.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block site_title_meta %} - Askved{% endblock %}
-{% block page_title %}Askved{% endblock %}
+{% block site_title_meta %} - {% trans "Ash Wood" %}{% endblock %}
+{% block page_title %}{% trans "Ash Wood" %}{% endblock %}
 
 {% block page_media %}
-<img src="{% static 'img/ved/bestalla/askved.png' %}" alt="askved" class="img-thumbnail">
+<img src="{% static 'img/ved/ask.png' %}" alt="askved" class="img-thumbnail">
 <div class="prices">
-    <h4>Priser</h4>
+    <h4>{% trans "Prices" %}</h4>
 
     <ul class="list-group list-group-flush">
-        <li class="list-group-item" style="border:none">Löst nykluven (kubik) - 510kr</li>
-        <li class="list-group-item">Löst torr (kubik) - 600kr</li>
-        <li class="list-group-item">Torr på pall (kubik) - 650kr</li>
-        <li class="list-group-item">40 liters säck (st) - 48kr</li>
-        <li class="list-group-item">Vid större mängd småsäckar ring alt maila angående pris.</li>
+      {% for p in wood %}
+        <li class="list-group-item">{{ p.title }} - {{ p.price }}kr</li>
+      {% endfor %}
     </ul>
-
 </div>
 {% endblock %}
 
 {% block page_content %}
-
-<div class="alert alert-warning" role="alert">
-  Askved är nu tillfälligt slut!
-</div>
 
 <form method="post" novalidate>
   {% csrf_token %}
@@ -39,7 +32,7 @@
     </div>
   {% endfor %}
 
-  <button type="submit" class="btn btn-primary">Beställ</button>
+  <button type="submit" class="btn btn-primary">{% trans "Order" %}</button>
 </form>
 
 {% endblock %}

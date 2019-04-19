@@ -1,7 +1,8 @@
 {% extends "index.html" %}
+{% load i18n %}
 
-{% block site_title_meta %} - Tack för din beställning{% endblock %}
-{% block page_title %}Tack för din beställning!{% endblock %}
+{% block site_title_meta %} - {% trans "Thank you for your order!" %}{% endblock %}
+{% block page_title %}{% trans "Thank you for your order!" %}{% endblock %}
 
 {% block page_content_wide %}
 <div class="row">

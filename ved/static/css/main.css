@@ -16,7 +16,7 @@ body {
 }
 
 .firewood-img {
-    margin-bottom: 15px;
+    margin-bottom: 0;
 }
 
 .page-title {
@@ -58,6 +58,10 @@ footer {
 .footer-navbar-text-created-by {
     color: rgba(0, 0, 0, 0.5) !important;
     font-size: 1em;
+}
+
+.footer-icons {
+    margin-left: 5px;
 }
 
 /* INDEX STUFF */

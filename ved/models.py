@@ -1,44 +1,55 @@
 from django.db import models
 from .choices import *
+from django.utils.translation import gettext_lazy as _
 
 
 class Order(models.Model):
-
     PAYMENT_METHODS = (
-        ('Kontant', 'Kontant'),
-        ('Swish', 'Swish'),
-        ('Kort', 'Kort'),
-        ('Faktura', 'Faktura'),
+        ('Cash', _('Cash')),
+        ('Swish', _('Swish')),
+        ('Card', _('Card')),
+        ('Invoice', _('Invoice')),
     )
 
     ORDER_STATUS = (
-        ('Ej påbörjad', 'Ej påbörjad'),
-        ('Påbörjad', 'Påbörjad'),
-        ('Levererad', 'Levererad'),
+        ('Not Started', _('Not Started')),
+        ('Started', _('Started')),
+        ('Delivered', _('Delivered')),
     )
 
-    name = models.CharField('Namn', max_length=50)
-    email = models.EmailField('E-post', max_length=50)
-    phone_number = models.CharField('Telefonnummer', max_length=20)
-    product_type = models.CharField('Produkttyp', max_length=50, choices=PRODUCT_TYPE, default=1)
-    firewood_choice = models.CharField('Val', max_length=50)
-    quantity = models.PositiveIntegerField('Kvantitet (kubik/st)', default=1)
-    delivery_option = models.CharField('Val av leverans', max_length=50, choices=DELIVERY_OPTIONS, default=1)
-    delivery_address = models.CharField('Leveransadress (om valet är utkörning)', max_length=50, blank=True)
-    description = models.TextField('Övrig info', max_length=1000, blank=True)
-    payment_method = models.CharField('Betala med', max_length=50, choices=PAYMENT_METHODS, default='Kontant')
+    name = models.CharField(verbose_name=_('Name'), max_length=50)
+    email = models.EmailField(verbose_name=_('E-Mail'), max_length=50)
+    phone_number = models.CharField(verbose_name=_('Phone Number'), max_length=20)
+    product_type = models.CharField(verbose_name=_('Type'), max_length=50, choices=PRODUCT_TYPE, default=1)
+    firewood_choice = models.CharField(verbose_name=_('Choice'), max_length=50)
+    quantity = models.PositiveIntegerField(verbose_name=_('Quantity (cubic/piece)'), default=1)
+    delivery_option = models.CharField(verbose_name=_('Delivery'), max_length=50, choices=DELIVERY_OPTIONS, default=1)
+    delivery_address = models.CharField(verbose_name=_('Delivery Address (if choice is delivery)'), max_length=50, blank=True)
+    description = models.TextField(verbose_name=_('Other Info'), max_length=1000, blank=True)
+    payment_method = models.CharField(verbose_name=_('Pay With'), max_length=50, choices=PAYMENT_METHODS, default='Cash')
     order_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    order_status = models.CharField('Status på order', max_length=30, choices=ORDER_STATUS, default='Ej påbörjad')
+    order_status = models.CharField(verbose_name=_('Order Status'), max_length=30, choices=ORDER_STATUS, default='Not Started')
 
     class Meta:
-        verbose_name = 'Order'
-        verbose_name_plural = 'Ordrar'
+        verbose_name = _('Order')
+        verbose_name_plural = _('Orders')
 
 
 class Offer(models.Model):
-    name = models.CharField('Namn på erbjudande', max_length=100)
-    offer_date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    name = models.CharField(verbose_name=_('Name'), max_length=100)
+    offer_date = models.DateTimeField(verbose_name=_('Date'), auto_now_add=True, blank=True, null=True)
 
     class Meta:
-        verbose_name = 'Erbjudande'
-        verbose_name_plural = 'Erbjudanden'
+        verbose_name = _('Offer')
+        verbose_name_plural = _('Offers')
+
+
+class Product(models.Model):
+    title = models.CharField(verbose_name=_('Title'), max_length=100)
+    desc = models.TextField(verbose_name=_('Description'), max_length=1000, blank=True)
+    price = models.DecimalField(verbose_name=_('Price'), max_digits=7, decimal_places=2)
+    ptype = models.CharField(verbose_name=_('Type'), max_length=50, choices=PRODUCT_TYPE, default=1)
+
+    class Meta:
+        verbose_name = _('Product')
+        verbose_name_plural = _('Products')

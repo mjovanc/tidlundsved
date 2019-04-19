@@ -1,7 +1,7 @@
-{% load static %}
+{% load static i18n %}
 
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html class="no-js" lang="{% get_current_language as LANGUAGE_CODE %}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,9 +9,23 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="apple-touch-icon" href="icon.png">
-        <!-- Place favicon.ico in the root directory -->
+        <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/favicon/apple-icon-57x57.png' %}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/favicon/apple-icon-60x60.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/favicon/apple-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicon/apple-icon-76x76.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/favicon/apple-icon-114x114.png' %}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/favicon/apple-icon-120x120.png' %}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/favicon/apple-icon-144x144.png' %}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{% static 'img/favicon/apple-icon-152x152.png' %}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon/apple-icon-180x180.png' %}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'img/favicon/android-icon-192x192.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{% static 'img/favicon/favicon-96x96.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'img/favicon/manifest.json' %}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{% static 'img/favicon/ms-icon-144x144.png' %}">
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -30,14 +44,14 @@
 
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Ved
+                          {% trans "Firewood" %}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{% url 'blandat_lovtrad' %}">Blandat lövträd</a>
-                            <a class="dropdown-item" href="{% url 'bjorkved' %}">Björkved</a>
-                            <a class="dropdown-item" href="{% url 'bokved' %}">Bokved</a>
-                            <a class="dropdown-item" href="{% url 'askved' %}">Askved</a>
-                            <a class="dropdown-item" href="{% url 'ovrigt' %}">Övrigt</a>
+                            <a class="dropdown-item" href="{% url 'blandat_lovtrad' %}">{% trans "Mixed Hardwood" %}</a>
+                            <a class="dropdown-item" href="{% url 'bjorkved' %}">{% trans "Birchwood" %}</a>
+                            <a class="dropdown-item" href="{% url 'bokved' %}">{% trans "Beechwood" %}</a>
+                            <a class="dropdown-item" href="{% url 'askved' %}">{% trans "Ash Wood" %}</a>
+                            <a class="dropdown-item" href="{% url 'ovrigt' %}">{% trans "Other" %}</a>
                         </div>
                       </li>
 
@@ -46,7 +60,7 @@
                       {% else %}
                       <li class="nav-item">
                       {% endif %}
-                        <a class="nav-item nav-link" href="{% url 'about' %}">Om oss</a>
+                        <a class="nav-item nav-link" href="{% url 'about' %}">{% trans "About Us" %}</a>
                       </li>
 
                       {% if request.path == "/kontakt/" %}
@@ -54,7 +68,7 @@
                       {% else %}
                       <li class="nav-item">
                       {% endif %}
-                        <a class="nav-item nav-link" href="{% url 'contact' %}">Kontakt</a>
+                        <a class="nav-item nav-link" href="{% url 'contact' %}">{% trans "Contact" %}</a>
                       </li>
 
                     </ul>
@@ -65,13 +79,18 @@
                       {% endfor %}
                   </span>
             </nav>
-
         </div>
 
     </head>
     <body>
     {% if request.path == "/" %}
     <img src="{% static 'img/firewood.jpg' %}" class="img-fluid firewood-img" alt="Responsive image">
+    {% endif %}
+
+    {% if SITEWIDE_NOTICE.title %}
+    <div class="alert alert-warning" role="alert">
+        {{ SITEWIDE_NOTICE.title }}
+    </div>
     {% endif %}
 
         <div class="container">
@@ -82,28 +101,28 @@
                 <figure class="figure">
                     <a href="{% url 'bokved' %}">
                         <img src="{% static 'img/ved/bokved.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption figure-firewood-caption">Bok</figcaption>
+                        <figcaption class="figure-caption figure-firewood-caption">{% trans "Beechwood" %}</figcaption>
                     </a>
                 </figure>
 
                 <figure class="figure">
                     <a href="{% url 'askved' %}">
                         <img src="{% static 'img/ved/ask.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption figure-firewood-caption">Ask</figcaption>
+                        <figcaption class="figure-caption figure-firewood-caption">{% trans "Ash Wood" %}</figcaption>
                     </a>
                 </figure>
 
                 <figure class="figure">
                     <a href="{% url 'bjorkved' %}">
                         <img src="{% static 'img/ved/bjork.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption figure-firewood-caption">Björk</figcaption>
+                        <figcaption class="figure-caption figure-firewood-caption">{% trans "Birchwood" %}</figcaption>
                     </a>
                 </figure>
 
                 <figure class="figure">
                     <a href="{% url 'blandat_lovtrad' %}">
                         <img src="{% static 'img/ved/blandved.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption figure-firewood-caption">Blandved</figcaption>
+                        <figcaption class="figure-caption figure-firewood-caption">{% trans "Mixed Hardwood" %}</figcaption>
                     </a>
                 </figure>
 
@@ -131,24 +150,34 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138705269-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-138705269-1');
+    </script>
+
     </body>
 <footer>
 
     <nav class="navbar fixed-bottom navbar-light bg-light navbar-footer">
         <div class="container">
                 <div class="col-8">
-                    <a class="navbar-brand footer-navbar-text-created-by float-left" href="https://www.linkedin.com/in/marcuscvjeticanin/">Skapad av Marcus Cvjeticanin</a>
-                </div>
-                <div class="col-4 col-extra" style="display:none">
-                    <div class="info-text">
-                        <span class="navbar-text footer-navbar-text float-center">
-                            Drivs av:
-                        </span>
-                        <a class="navbar-brand float-right" href="https://www.python.org/">
-                            <img src="{% static 'img/python.png' %}" width="30" height="30" alt="Python">
+                    <a class="navbar-brand footer-navbar-text-created-by float-left" href="https://www.linkedin.com/in/marcuscvjeticanin/">{% trans "Created by" %} Marcus Cvjeticanin</a>
+                    <div class="navbar-brand footer-navbar-text-created-by float-right" href="https://www.linkedin.com/in/marcuscvjeticanin/">
+                        {% trans "Powered by:" %}
+                        <a href="https://www.python.org/" target="_blank">
+                            <img src="{% static 'img/python.png' %}" class="footer-icons" alt="Python" height="25">
                         </a>
-                        <a class="navbar-brand float-right" href="https://www.djangoproject.com/">
-                            <img src="{% static 'img/django.png' %}" height="30" alt="Django">
+                        <a href="https://www.djangoproject.com/" target="_blank">
+                            <img src="{% static 'img/django.png' %}" class="footer-icons" alt="Django" height="25">
+                        </a>
+                        <a href="https://github.com/mjovanc/tidlundsved" target="_blank">
+                            <img src="{% static 'img/github.png' %}" class="footer-icons" alt="Github" height="25">
                         </a>
                     </div>
                 </div>

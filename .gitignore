@@ -106,3 +106,6 @@ venv.bak/
 # Secret stuff
 tidlundsved/settings_prod.py
 tidlundsved/secret.py
+
+# Pycharm
+.idea

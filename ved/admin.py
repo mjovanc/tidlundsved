@@ -29,5 +29,16 @@ class OfferAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'title',
+        'desc',
+        'price',
+        'ptype'
+    )
+
+
 admin.site.site_header = 'TIDLUNDS VED ADMIN'
 admin.site.site_title = 'Tidlunds ved admin'

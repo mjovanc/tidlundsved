@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import Order
 from .choices import *
+from django.utils.translation import gettext_lazy as _
 
 
 class OrderForm(ModelForm):
@@ -13,18 +14,18 @@ class OrderForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(OrderForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = 'form-control'
-        self.fields['name'].widget.attrs['placeholder'] = 'Förnamn och efternamn'
-        self.fields['name'].error_messages = {'required': 'Detta fält är ett krav'}
+        self.fields['name'].widget.attrs['placeholder'] = _('First name and last name')
+        self.fields['name'].error_messages = {'required': _('This field is required')}
         self.fields['email'].widget.attrs['class'] = 'form-control'
-        self.fields['email'].widget.attrs['placeholder'] = 'exempel@mail.se'
-        self.fields['email'].error_messages = {'required': 'Ange en korrekt emailaddress'}
+        self.fields['email'].widget.attrs['placeholder'] = 'example@mail.se'
+        self.fields['email'].error_messages = {'required': _('Enter a correct E-Mail address')}
         self.fields['phone_number'].widget.attrs['class'] = 'form-control'
-        self.fields['phone_number'].widget.attrs['placeholder'] = 'Telefonnummer'
+        self.fields['phone_number'].widget.attrs['placeholder'] = _('Phone Number')
         self.fields['firewood_choice'].widget.attrs['class'] = 'form-control'
         self.fields['quantity'].widget.attrs['class'] = 'form-control'
         self.fields['delivery_option'].widget.attrs['class'] = 'form-control'
         self.fields['delivery_address'].widget.attrs['class'] = 'form-control'
-        self.fields['delivery_address'].widget.attrs['placeholder'] = 'Adress'
+        self.fields['delivery_address'].widget.attrs['placeholder'] = _('Address')
         self.fields['description'].widget.attrs['class'] = 'form-control'
         self.fields['description'].widget.attrs['rows'] = '4'
         self.fields['payment_method'].widget.attrs['class'] = 'form-control'
@@ -66,16 +67,16 @@ class OrderFormOther(OrderForm):
 
 
 class ContactForm(forms.Form):
-    name = forms.CharField(label='Namn', max_length=50)
-    sender = forms.EmailField(label='E-post')
-    message = forms.CharField(label='Meddelande', widget=forms.Textarea)
-    cc_myself = forms.BooleanField(label='Kopia till mail', required=False)
+    name = forms.CharField(label=_('Name'), max_length=50)
+    sender = forms.EmailField(label=_('E-Mail'))
+    message = forms.CharField(label=_('Message'), widget=forms.Textarea)
+    cc_myself = forms.BooleanField(label=_('Copy to E-mail'), required=False)
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = 'form-control'
-        self.fields['name'].widget.attrs['placeholder'] = 'Namn'
+        self.fields['name'].widget.attrs['placeholder'] = _('Name')
         self.fields['sender'].widget.attrs['class'] = 'form-control'
-        self.fields['sender'].widget.attrs['placeholder'] = 'E-post'
+        self.fields['sender'].widget.attrs['placeholder'] = _('E-Mail')
         self.fields['message'].widget.attrs['class'] = 'form-control'
         self.fields['message'].widget.attrs['rows'] = '4'

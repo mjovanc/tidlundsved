@@ -1,4 +1,5 @@
 import os
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,6 +28,7 @@ SECRET_KEY = KEY
 ROOT_URLCONF = 'tidlundsved.urls'
 
 INSTALLED_APPS = [
+    'settings',
     'anymail',
     'ved',
     'django.contrib.admin',
@@ -60,6 +62,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'ved.context_processors.offerings',
                 'ved.context_processors.site_title',
+                'settings.context_processors.settings',
             ],
         },
     },
@@ -82,7 +85,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SITE_TITLE = 'Tidlunds ved'
 
-LANGUAGE_CODE = 'sv-se'
+LANGUAGE_CODE = 'sv'
+LANGUAGES = [
+  ('sv', _('Swedish')),
+  ('en', _('English')),
+]
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
+
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
@@ -93,3 +104,8 @@ STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
 DEFAULT_FROM_EMAIL = 'noreply@tidlundsved.se'
+
+ANYMAIL = {
+    'MAILGUN_API_KEY': ANYMAIL_KEY,
+    'MAILGUN_SENDER_DOMAIN': 'mail.tidlundsved.se',
+}

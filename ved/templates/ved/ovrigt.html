@@ -1,13 +1,13 @@
 {% extends "index.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block site_title_meta %} - Övrigt{% endblock %}
-{% block page_title %}Övrigt{% endblock %}
+{% block site_title_meta %} - {% trans "Other" %}{% endblock %}
+{% block page_title %}{% trans "Other" %}{% endblock %}
 
 {% block page_media %}
 <img src="{% static 'img/ved/bestalla/ovrigt.jpg' %}" alt="övrigt" class="img-thumbnail">
 <div class="prices">
-    <h4>Priser</h4>
+    <h4>{% trans "Prices" %}</h4>
 
     <ul class="list-group list-group-flush">
       {% for p in wood %}
@@ -37,7 +37,7 @@
     </div>
   {% endfor %}
 
-  <button type="submit" class="btn btn-primary">Beställ</button>
+  <button type="submit" class="btn btn-primary">{% trans "Order" %}</button>
 </form>
 
 {% endblock %}

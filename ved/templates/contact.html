@@ -1,7 +1,8 @@
 {% extends "index.html" %}
+{% load i18n %}
 
-{% block site_title_meta %} - Kontakta oss {% endblock %}
-{% block page_title %}Kontakta oss{% endblock %}
+{% block site_title_meta %} - {% trans "Contact Us" %} {% endblock %}
+{% block page_title %}{% trans "Contact Us" %}{% endblock %}
 
 {% block page_media %}
 <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key= AIzaSyC0FPdOz9KDZOugual4QO1hbvjSLsj3nTU '></script><div style='overflow:hidden;height:400px;width:550px;'><div id='gmap_canvas' style='height:550px;width:550px;'></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div>
@@ -11,7 +12,7 @@
 {% endblock %}
 
 {% block page_content %}
-<p>Mail: andtidlund@hotmail.com<br>Telefon: ‭070-585 43 38‬
+<p>{% trans "E-Mail" %}: andtidlund@hotmail.com<br>{% trans "Phone" %}: ‭070-585 43 38‬
 
 </p>
 
@@ -26,7 +27,7 @@
         {% endif %}
     </div>
 {% endfor %}
-    <button type="submit" class="btn btn-primary">Skicka</button>
+    <button type="submit" class="btn btn-primary">{% trans "Send" %}</button>
 </form>
 
 {% endblock %}

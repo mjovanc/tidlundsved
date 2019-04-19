@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-19 14:28+0200\n"
+"POT-Creation-Date: 2019-04-19 15:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: MARCUS CVJETICANIN <MJOVANC@PROTONMAIL.COM>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,43 @@ msgstr "Svenska"
 #: tidlundsved/settings.py:89
 msgid "English"
 msgstr "Engelska"
+
+#: ved/forms.py:17
+msgid "First name and last name"
+msgstr "Förnamn och efternamn"
+
+#: ved/forms.py:18
+msgid "This field is required"
+msgstr "Detta fält är ett krav"
+
+#: ved/forms.py:21
+msgid "Enter a correct E-Mail address"
+msgstr "Ange en korrekt e-post adress"
+
+#: ved/forms.py:23 ved/models.py:22
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+#: ved/forms.py:28
+msgid "Address"
+msgstr "Adress"
+
+#: ved/forms.py:70 ved/forms.py:78 ved/models.py:20 ved/models.py:39
+msgid "Name"
+msgstr "Namn"
+
+#: ved/forms.py:71 ved/forms.py:80 ved/models.py:21
+#: ved/templates/contact.html:15
+msgid "E-Mail"
+msgstr "E-post"
+
+#: ved/forms.py:72
+msgid "Message"
+msgstr "Meddelande"
+
+#: ved/forms.py:73
+msgid "Copy to E-mail"
+msgstr "Kopia till mail"
 
 #: ved/models.py:8
 msgid "Cash"
@@ -53,18 +90,6 @@ msgstr "Påbörjad"
 #: ved/models.py:17
 msgid "Delivered"
 msgstr "Levererad"
-
-#: ved/models.py:20 ved/models.py:39
-msgid "Name"
-msgstr "Namn"
-
-#: ved/models.py:21
-msgid "E-Mail"
-msgstr "E-post"
-
-#: ved/models.py:22
-msgid "Phone Number"
-msgstr "Telefonnummer"
 
 #: ved/models.py:23 ved/models.py:51
 msgid "Type"
@@ -98,7 +123,9 @@ msgstr "Betala med"
 msgid "Order Status"
 msgstr "Orderstatus"
 
-#: ved/models.py:34
+#: ved/models.py:34 ved/templates/ved/askved.html:39
+#: ved/templates/ved/bjorkved.html:36 ved/templates/ved/blandat_lovtrad.html:35
+#: ved/templates/ved/bokved.html:35 ved/templates/ved/ovrigt.html:40
 msgid "Order"
 msgstr "Order"
 
@@ -137,3 +164,84 @@ msgstr "Produkt"
 #: ved/models.py:55
 msgid "Products"
 msgstr "Produkter"
+
+#: ved/templates/about.html:4 ved/templates/index.html:63
+msgid "About Us"
+msgstr "Om oss"
+
+#: ved/templates/about.html:5
+msgid "About Tidlunds ved"
+msgstr "Om Tidlunds ved"
+
+#: ved/templates/contact.html:4 ved/templates/contact.html:5
+msgid "Contact Us"
+msgstr "Kontakta oss"
+
+#: ved/templates/contact.html:15
+msgid "Phone"
+msgstr "Telefon"
+
+#: ved/templates/contact.html:30
+msgid "Send"
+msgstr "Skicka"
+
+#: ved/templates/index.html:47
+msgid "Firewood"
+msgstr "Ved"
+
+#: ved/templates/index.html:50 ved/templates/index.html:120
+#: ved/templates/ved/blandat_lovtrad.html:4
+#: ved/templates/ved/blandat_lovtrad.html:5
+msgid "Mixed Hardwood"
+msgstr "Blandat lövträd"
+
+#: ved/templates/index.html:51 ved/templates/index.html:113
+#: ved/templates/ved/bjorkved.html:4 ved/templates/ved/bjorkved.html:5
+msgid "Birchwood"
+msgstr "Björkved"
+
+#: ved/templates/index.html:52 ved/templates/index.html:99
+#: ved/templates/ved/bokved.html:4 ved/templates/ved/bokved.html:5
+msgid "Beechwood"
+msgstr "Bokved"
+
+#: ved/templates/index.html:53 ved/templates/index.html:106
+#: ved/templates/ved/askved.html:4 ved/templates/ved/askved.html:5
+msgid "Ash Wood"
+msgstr "Askved"
+
+#: ved/templates/index.html:54 ved/templates/ved/ovrigt.html:4
+#: ved/templates/ved/ovrigt.html:5
+msgid "Other"
+msgstr "Övrigt"
+
+#: ved/templates/index.html:71
+msgid "Contact"
+msgstr "Kontakt"
+
+#: ved/templates/index.html:154
+msgid "Created by"
+msgstr "Skapad av"
+
+#: ved/templates/order.html:4 ved/templates/order.html:5
+msgid "Order Firewood"
+msgstr "Beställ ved"
+
+#: ved/templates/various/mail.html:4 ved/templates/various/mail.html:5
+msgid "Thank you for your E-Mail!"
+msgstr "Tack för ditt mail!"
+
+#: ved/templates/various/success.html:4 ved/templates/various/success.html:5
+msgid "Thank you for your order!"
+msgstr "Tack för din order!"
+
+#: ved/templates/ved/askved.html:10 ved/templates/ved/bjorkved.html:10
+#: ved/templates/ved/blandat_lovtrad.html:10 ved/templates/ved/bokved.html:10
+#: ved/templates/ved/ovrigt.html:10
+msgid "Prices"
+msgstr "Priser"
+
+#, fuzzy
+#~| msgid "Beechwood"
+#~ msgid "Beechwod"
+#~ msgstr "Bokved"

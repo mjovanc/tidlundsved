@@ -1,7 +1,8 @@
 {% extends "index.html" %}
+{% load i18n %}
 
-{% block site_title_meta %} - Om oss {% endblock %}
-{% block page_title %}Om Tidlunds ved{% endblock %}
+{% block site_title_meta %} - {% trans "About Us" %} {% endblock %}
+{% block page_title %}{% trans "About Tidlunds ved" %}{% endblock %}
 
 {% block page_media %}
 <div id="fb-root"></div>

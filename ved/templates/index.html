@@ -1,7 +1,7 @@
-{% load static %}
+{% load static i18n %}
 
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html class="no-js" lang="{% get_current_language as LANGUAGE_CODE %}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -44,14 +44,14 @@
 
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Ved
+                          {% trans "Firewood" %}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{% url 'blandat_lovtrad' %}">Blandat lövträd</a>
-                            <a class="dropdown-item" href="{% url 'bjorkved' %}">Björkved</a>
-                            <a class="dropdown-item" href="{% url 'bokved' %}">Bokved</a>
-                            <a class="dropdown-item" href="{% url 'askved' %}">Askved</a>
-                            <a class="dropdown-item" href="{% url 'ovrigt' %}">Övrigt</a>
+                            <a class="dropdown-item" href="{% url 'blandat_lovtrad' %}">{% trans "Mixed Hardwood" %}</a>
+                            <a class="dropdown-item" href="{% url 'bjorkved' %}">{% trans "Birchwood" %}</a>
+                            <a class="dropdown-item" href="{% url 'bokved' %}">{% trans "Beechwood" %}</a>
+                            <a class="dropdown-item" href="{% url 'askved' %}">{% trans "Ash Wood" %}</a>
+                            <a class="dropdown-item" href="{% url 'ovrigt' %}">{% trans "Other" %}</a>
                         </div>
                       </li>
 
@@ -60,7 +60,7 @@
                       {% else %}
                       <li class="nav-item">
                       {% endif %}
-                        <a class="nav-item nav-link" href="{% url 'about' %}">Om oss</a>
+                        <a class="nav-item nav-link" href="{% url 'about' %}">{% trans "About Us" %}</a>
                       </li>
 
                       {% if request.path == "/kontakt/" %}
@@ -68,7 +68,7 @@
                       {% else %}
                       <li class="nav-item">
                       {% endif %}
-                        <a class="nav-item nav-link" href="{% url 'contact' %}">Kontakt</a>
+                        <a class="nav-item nav-link" href="{% url 'contact' %}">{% trans "Contact" %}</a>
                       </li>
 
                     </ul>
@@ -96,28 +96,28 @@
                 <figure class="figure">
                     <a href="{% url 'bokved' %}">
                         <img src="{% static 'img/ved/bokved.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption figure-firewood-caption">Bok</figcaption>
+                        <figcaption class="figure-caption figure-firewood-caption">{% trans "Beechwood" %}</figcaption>
                     </a>
                 </figure>
 
                 <figure class="figure">
                     <a href="{% url 'askved' %}">
                         <img src="{% static 'img/ved/ask.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption figure-firewood-caption">Ask</figcaption>
+                        <figcaption class="figure-caption figure-firewood-caption">{% trans "Ash Wood" %}</figcaption>
                     </a>
                 </figure>
 
                 <figure class="figure">
                     <a href="{% url 'bjorkved' %}">
                         <img src="{% static 'img/ved/bjork.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption figure-firewood-caption">Björk</figcaption>
+                        <figcaption class="figure-caption figure-firewood-caption">{% trans "Birchwood" %}</figcaption>
                     </a>
                 </figure>
 
                 <figure class="figure">
                     <a href="{% url 'blandat_lovtrad' %}">
                         <img src="{% static 'img/ved/blandved.png' %}" width="500" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption figure-firewood-caption">Blandved</figcaption>
+                        <figcaption class="figure-caption figure-firewood-caption">{% trans "Mixed Hardwood" %}</figcaption>
                     </a>
                 </figure>
 
@@ -151,7 +151,7 @@
     <nav class="navbar fixed-bottom navbar-light bg-light navbar-footer">
         <div class="container">
                 <div class="col-8">
-                    <a class="navbar-brand footer-navbar-text-created-by float-left" href="https://www.linkedin.com/in/marcuscvjeticanin/">Skapad av Marcus Cvjeticanin</a>
+                    <a class="navbar-brand footer-navbar-text-created-by float-left" href="https://www.linkedin.com/in/marcuscvjeticanin/">{% trans "Created by" %} Marcus Cvjeticanin</a>
                 </div>
                 <div class="col-4 col-extra" style="display:none">
                     <div class="info-text">

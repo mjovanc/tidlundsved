@@ -79,7 +79,6 @@
                       {% endfor %}
                   </span>
             </nav>
-
         </div>
 
     </head>
@@ -87,6 +86,10 @@
     {% if request.path == "/" %}
     <img src="{% static 'img/firewood.jpg' %}" class="img-fluid firewood-img" alt="Responsive image">
     {% endif %}
+
+    <div class="alert alert-warning" role="alert">
+        {{ SITEWIDE_NOTICE.title }}
+    </div>
 
         <div class="container">
             {% if request.path == "/" %}

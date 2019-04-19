@@ -28,6 +28,7 @@ SECRET_KEY = KEY
 ROOT_URLCONF = 'tidlundsved.urls'
 
 INSTALLED_APPS = [
+    'settings',
     'anymail',
     'ved',
     'django.contrib.admin',
@@ -61,6 +62,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'ved.context_processors.offerings',
                 'ved.context_processors.site_title',
+                'settings.context_processors.settings',
             ],
         },
     },

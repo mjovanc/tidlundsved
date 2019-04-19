@@ -7,4 +7,4 @@ def offerings(request):
 
 
 def site_title(request):
-    return {'SITE_TITLE': settings.SITE_TITLE}
+    return {'SITE_TITLE': settings.SITE_TITLE }

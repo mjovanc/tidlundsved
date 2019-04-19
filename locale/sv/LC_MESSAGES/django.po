@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <MJOVANC@PROTONMAIL.COM>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-19 14:28+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: MARCUS CVJETICANIN <MJOVANC@PROTONMAIL.COM>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: tidlundsved/settings.py:88
+msgid "Swedish"
+msgstr "Svenska"
+
+#: tidlundsved/settings.py:89
+msgid "English"
+msgstr "Engelska"
+
+#: ved/models.py:8
+msgid "Cash"
+msgstr "Kort"
+
+#: ved/models.py:9
+msgid "Swish"
+msgstr "Swish"
+
+#: ved/models.py:10
+msgid "Card"
+msgstr "Kort"
+
+#: ved/models.py:11
+msgid "Invoice"
+msgstr "Faktura"
+
+#: ved/models.py:15
+msgid "Not Started"
+msgstr "Ej påbörjad"
+
+#: ved/models.py:16
+msgid "Started"
+msgstr "Påbörjad"
+
+#: ved/models.py:17
+msgid "Delivered"
+msgstr "Levererad"
+
+#: ved/models.py:20 ved/models.py:39
+msgid "Name"
+msgstr "Namn"
+
+#: ved/models.py:21
+msgid "E-Mail"
+msgstr "E-post"
+
+#: ved/models.py:22
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+#: ved/models.py:23 ved/models.py:51
+msgid "Type"
+msgstr "Typ"
+
+#: ved/models.py:24
+msgid "Choice"
+msgstr "Val"
+
+#: ved/models.py:25
+msgid "Quantity (cubic/piece)"
+msgstr "Kvantitet (kubik/st)"
+
+#: ved/models.py:26
+msgid "Delivery"
+msgstr "Leverans"
+
+#: ved/models.py:27
+msgid "Delivery Address (if choice is delivery)"
+msgstr "Leveransaddress (om valet är utkörning)"
+
+#: ved/models.py:28
+msgid "Other Info"
+msgstr "Övrig info"
+
+#: ved/models.py:29
+msgid "Pay With"
+msgstr "Betala med"
+
+#: ved/models.py:31
+msgid "Order Status"
+msgstr "Orderstatus"
+
+#: ved/models.py:34
+msgid "Order"
+msgstr "Order"
+
+#: ved/models.py:35
+msgid "Orders"
+msgstr "Ordrar"
+
+#: ved/models.py:40
+msgid "Date"
+msgstr "Datum"
+
+#: ved/models.py:43
+msgid "Offer"
+msgstr "Erbjudande"
+
+#: ved/models.py:44
+msgid "Offers"
+msgstr "Erbjudanden"
+
+#: ved/models.py:48
+msgid "Title"
+msgstr "Titel"
+
+#: ved/models.py:49
+msgid "Description"
+msgstr "Beskrivning"
+
+#: ved/models.py:50
+msgid "Price"
+msgstr "Pris"
+
+#: ved/models.py:54
+msgid "Product"
+msgstr "Produkt"
+
+#: ved/models.py:55
+msgid "Products"
+msgstr "Produkter"

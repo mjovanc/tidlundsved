@@ -1,4 +1,5 @@
 import os
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,7 +83,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SITE_TITLE = 'Tidlunds ved'
 
-LANGUAGE_CODE = 'sv-se'
+LANGUAGE_CODE = 'sv'
+LANGUAGES = [
+  ('sv', _('Swedish')),
+  ('en', _('English')),
+]
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
+
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True

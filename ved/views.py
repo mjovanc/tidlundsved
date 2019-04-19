@@ -48,7 +48,7 @@ def blandat_lovtrad(request):
     return TemplateResponse(request, 'ved/blandat_lovtrad.html',
         {
             'form': form,
-            'wood': Product.objects.all().filter(category='Blandat lövträd')
+            'wood': Product.objects.all().filter(ptype='Blandat lövträd')
         }
     )
 
@@ -70,7 +70,7 @@ def bjorkved(request):
     return TemplateResponse(request, 'ved/bjorkved.html', 
         {
             'form': form,
-            'wood': Product.objects.all().filter(category='Björkved')
+            'wood': Product.objects.all().filter(ptype='Björkved')
         }
     )
 
@@ -92,7 +92,7 @@ def bokved(request):
     return TemplateResponse(request, 'ved/bokved.html', 
         {
             'form': form,
-            'wood': Product.objects.all().filter(category='Bokved')
+            'wood': Product.objects.all().filter(ptype='Bokved')
         }
     )
 
@@ -114,7 +114,7 @@ def askved(request):
     return TemplateResponse(request, 'ved/askved.html', 
         {
             'form': form,
-            'wood': Product.objects.all().filter(category='Askved')
+            'wood': Product.objects.all().filter(ptype='Askved')
         }
     )
 
@@ -136,7 +136,7 @@ def ovrigt(request):
     return TemplateResponse(request, 'ved/ovrigt.html',  
         {
             'form': form,
-            'wood': Product.objects.all().filter(category='Övrigt')
+            'wood': Product.objects.all().filter(ptype='Övrigt')
         }
     )
 

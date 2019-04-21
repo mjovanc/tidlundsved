@@ -4,12 +4,13 @@ from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 try:
-    from .secret import *
+    from .tidlundsved.secret import *
 except ImportError as e:
     pass
 
-PRODUCTION = False
+PRODUCTION = True
 
 if (PRODUCTION):
     try:
@@ -99,7 +100,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_ROOT = '/home/marcus/tv/tidlundsved/static/'
+STATIC_ROOT = '/home/mjovanc/tv/venv/project_files/static/'
 STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'

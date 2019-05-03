@@ -5,14 +5,6 @@ from .functions import send_email, send_order_verification
 from .models import Product
 
 
-def index(request):
-    return TemplateResponse(request, 'index.html')
-
-
-def about(request):
-    return TemplateResponse(request, 'about.html')
-
-
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)

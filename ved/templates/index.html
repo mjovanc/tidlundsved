@@ -134,10 +134,10 @@
             {% block page_content_wide %}{% endblock %}
 
             <div class="row">
-                <div class="col">
+                <div class="col-sm-6 col-xs-6 col-md-6">
                   {% block page_media %}{% endblock %}
                 </div>
-                <div class="col">
+                <div class="col-sm-6 col-xs-6 col-md-6">
                   {% block page_content %}{% endblock %}
                 </div>
 
@@ -168,7 +168,7 @@
         <div class="container">
                 <div class="col-8">
                     <a class="navbar-brand footer-navbar-text-created-by float-left" href="https://www.linkedin.com/in/marcuscvjeticanin/">{% trans "Created by" %} Marcus Cvjeticanin</a>
-                    <div class="navbar-brand footer-navbar-text-created-by float-right" href="https://www.linkedin.com/in/marcuscvjeticanin/">
+                    <div class="navbar-brand footer-navbar-text-created-by" href="https://www.linkedin.com/in/marcuscvjeticanin/">
                         {% trans "Powered by:" %}
                         <a href="https://www.python.org/" target="_blank">
                             <img src="{% static 'img/python.png' %}" class="footer-icons" alt="Python" height="25">

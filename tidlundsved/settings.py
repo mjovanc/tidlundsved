@@ -6,20 +6,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 try:
-    from .tidlundsved.secret import *
+    from tidlundsved.secret import *
 except ImportError as e:
     pass
 
-PRODUCTION = True
+PRODUCTION = False
 
 if (PRODUCTION):
     try:
-        from .settings_prod import *
+        from tidlundsved.settings_prod import *
     except ImportError as e:
         pass
 else:
     try:
-        from .settings_dev import *
+        from tidlundsved.settings_dev import *
     except ImportError as e:
         pass
 

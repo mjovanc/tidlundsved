@@ -8,7 +8,7 @@ This web application was built specifically for a company called Tidlunds ved th
 
 The web application for Tidlunds ved uses:
 
-* Python 3.7
+* Python 3.5+
 * Django web framework 2.2
 
 ## License

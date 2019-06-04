@@ -1,10 +1,15 @@
 from django.template.response import TemplateResponse
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import FormView
+from django.utils.translation import gettext_lazy as _
+from django.urls import reverse_lazy
 from django.conf import settings
-from .forms import *
+from ved.forms import *
 from .functions import send_email, send_order_verification
 from .models import Product
 
 
+# must change this later
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -24,9 +29,73 @@ def contact(request):
     return TemplateResponse(request, 'contact.html', {'form': form})
 
 
+class MixedHardWood(FormView):
+    template_name = 'ved/mixed-hardwood.html'
+    form_class = OrderFormMixedHardWood
+    success_url = reverse_lazy('contact')
+
+    def form_valid(self, form):
+        self.obj = form.save(commit=False)
+        self.obj.product_type = _('Blandat lövträd')
+        self.obj.save()
+        return super().form_valid(self.obj)
+
+
+class BirchWood(FormView):
+    template_name = 'ved/birchwood.html'
+    form_class = OrderFormBirchWood
+    success_url = reverse_lazy('contact')
+
+    def form_valid(self, form):
+        self.obj = form.save(commit=False)
+        self.obj.product_type = _('Björkved')
+        self.obj.save()
+        return super().form_valid(self.obj)
+
+
+class BeechWood(FormView):
+    template_name = 'ved/beechwood.html'
+    form_class = OrderFormBeechWood
+    success_url = reverse_lazy('contact')
+
+    def form_valid(self, form):
+        self.obj = form.save(commit=False)
+        self.obj.product_type = _('Bokved')
+        self.obj.save()
+        return super().form_valid(self.obj)
+
+
+class AshWood(FormView):
+    template_name = 'ved/ashwood.html'
+    form_class = OrderFormAshWood
+    success_url = reverse_lazy('contact')
+
+    def form_valid(self, form):
+        self.obj = form.save(commit=False)
+        self.obj.product_type = _('Askved')
+        self.obj.save()
+        return super().form_valid(self.obj)
+
+
+class Other(FormView):
+    template_name = 'ved/other.html'
+    form_class = OrderFormOther
+    success_url = reverse_lazy('success')
+
+    def form_valid(self, form):
+        self.obj = form.save(commit=False)
+        self.obj.product_type = _('Övrigt')
+        self.obj.save()
+        return super().form_valid(self.obj)
+
+
+class Success(TemplateView):
+    template_name = 'various/success.html'
+
+
 def blandat_lovtrad(request):
     if request.method == 'POST':
-        form = OrderFormLovTrad(request.POST)
+        form = OrderFormMixedHardWood(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.product_type = 'Blandat lövträd'
@@ -36,8 +105,8 @@ def blandat_lovtrad(request):
 
             return TemplateResponse(request, 'various/success.html', {'ORDER_ID': obj.pk})
     else:
-        form = OrderFormLovTrad()
-    return TemplateResponse(request, 'ved/blandat_lovtrad.html',
+        form = OrderFormMixedHardWood()
+    return TemplateResponse(request, 'ved/mixed-hardwood.html',
         {
             'form': form,
             'wood': Product.objects.all().filter(ptype='Blandat lövträd')
@@ -47,7 +116,7 @@ def blandat_lovtrad(request):
 
 def bjorkved(request):
     if request.method == 'POST':
-        form = OrderFormBjorkved(request.POST)
+        form = OrderFormBirchWood(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.product_type = 'Björkved'
@@ -58,8 +127,8 @@ def bjorkved(request):
             return TemplateResponse(request, 'various/success.html',
                                     {'ORDER_ID': obj.pk})
     else:
-        form = OrderFormBjorkved()
-    return TemplateResponse(request, 'ved/bjorkved.html', 
+        form = OrderFormBirchWood()
+    return TemplateResponse(request, 'ved/birchwood.html',
         {
             'form': form,
             'wood': Product.objects.all().filter(ptype='Björkved')
@@ -69,7 +138,7 @@ def bjorkved(request):
 
 def bokved(request):
     if request.method == 'POST':
-        form = OrderFormBokved(request.POST)
+        form = OrderFormBeechWood(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.product_type = 'Bokved'
@@ -80,8 +149,8 @@ def bokved(request):
             return TemplateResponse(request, 'various/success.html',
                                     {'ORDER_ID': obj.pk})
     else:
-        form = OrderFormBokved()
-    return TemplateResponse(request, 'ved/bokved.html', 
+        form = OrderFormBeechWood()
+    return TemplateResponse(request, 'ved/beechwood.html',
         {
             'form': form,
             'wood': Product.objects.all().filter(ptype='Bokved')
@@ -91,7 +160,7 @@ def bokved(request):
 
 def askved(request):
     if request.method == 'POST':
-        form = OrderFormAskved(request.POST)
+        form = OrderFormAshWood(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.product_type = 'Askved'
@@ -102,8 +171,8 @@ def askved(request):
             return TemplateResponse(request, 'various/success.html',
                                     {'ORDER_ID': obj.pk})
     else:
-        form = OrderFormAskved()
-    return TemplateResponse(request, 'ved/askved.html', 
+        form = OrderFormAshWood()
+    return TemplateResponse(request, 'ved/ashwood.html',
         {
             'form': form,
             'wood': Product.objects.all().filter(ptype='Askved')
@@ -125,7 +194,7 @@ def ovrigt(request):
                                     {'ORDER_ID': obj.pk})
     else:
         form = OrderFormOther()
-    return TemplateResponse(request, 'ved/ovrigt.html',  
+    return TemplateResponse(request, 'ved/other.html',
         {
             'form': form,
             'wood': Product.objects.all().filter(ptype='Övrigt')

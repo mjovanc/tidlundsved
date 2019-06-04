@@ -1,9 +1,12 @@
+from django.utils.translation import gettext_lazy as _
+
+
 PRODUCT_TYPE = (
-    ("Blandat lövträd", "Blandat lövträd"),
-    ("Björkved", "Björkved"),
-    ("Bokved", "Bokved"),
-    ("Askved", "Askved"),
-    ("Övrigt", "Övrigt"),
+    ('Blandat lövträd', 'Blandat lövträd'),
+    ('Björkved', 'Björkved'),
+    ('Bokved', 'Bokved'),
+    ('Askved', 'Askved'),
+    ('Övrigt', 'Övrigt'),
 )
 
 BLANDAT_LOVTRAD_CHOICES = (

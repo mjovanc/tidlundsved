@@ -86,7 +86,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SITE_TITLE = 'Tidlunds ved'
 
-LANGUAGE_CODE = 'sv'
+LANGUAGE_CODE = 'en'
 LANGUAGES = [
   ('sv', _('Swedish')),
   ('en', _('English')),

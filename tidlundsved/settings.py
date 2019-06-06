@@ -63,7 +63,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'ved.context_processors.offerings',
                 'ved.context_processors.site_title',
-                'settings.context_processors.settings',
+                'settings.context_processors.get_settings',
             ],
         },
     },

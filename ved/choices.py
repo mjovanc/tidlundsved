@@ -1,5 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 
+# This is be removed as we intend to keep product types in DB rather then hardcoded here
 
 PRODUCT_TYPE = (
     ('Blandat lövträd', 'Blandat lövträd'),

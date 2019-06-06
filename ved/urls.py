@@ -1,10 +1,9 @@
 from django.urls import path, include
-from ved.views import MixedHardWood, BirchWood, BeechWood, AshWood, Other
+from ved.views import Contact, MixedHardWood, BirchWood, BeechWood, AshWood, Other
 
-from . import views
 
 urlpatterns = [
-    path('kontakt/', views.contact, name='contact'),
+    path('kontakt/', Contact.as_view(), name='contact'),
     path('ved/blandat', MixedHardWood.as_view(), name='blandat_lovtrad'),
     path('ved/bjork', BirchWood.as_view(), name='bjorkved'),
     path('ved/bok', BeechWood.as_view(), name='bokved'),

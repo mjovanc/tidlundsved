@@ -87,9 +87,9 @@
     <img src="{% static 'img/firewood.jpg' %}" class="img-fluid firewood-img" alt="Responsive image">
     {% endif %}
 
-    {% if SITEWIDE_NOTICE.title %}
+    {% if SETTING.sitewide_notice %}
     <div class="alert alert-warning" role="alert">
-        {{ SITEWIDE_NOTICE.title }}
+        {{ SETTING.sitewide_notice }}
     </div>
     {% endif %}
 

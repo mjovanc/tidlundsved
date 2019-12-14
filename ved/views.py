@@ -2,8 +2,9 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
+from django.core.mail import send_mail
+from django.conf import settings
 from ved.forms import *
-from .functions import send_email, send_order_verification
 
 
 class Contact(FormView):
@@ -12,7 +13,17 @@ class Contact(FormView):
     success_url = reverse_lazy('ovrigt')
 
     def form_valid(self, form):
-        form.send_email()
+        message = "{name} / {email} said: ".format(
+            name=form.cleaned_data.get('name'),
+            email=form.cleaned_data.get('email'))
+        message += "\n\n{0}".format(form.cleaned_data.get('message'))
+
+        send_mail(
+            subject=form.cleaned_data.get('message').strip(),
+            message=message,
+            from_email=settings.EMAIL_SEND_FROM,
+            recipient_list=settings.LIST_OF_EMAIL_RECIPIENTS,
+        )
         return super().form_valid(form)
 
 
@@ -23,7 +34,7 @@ class MixedHardWood(FormView):
 
     def form_valid(self, form):
         self.obj = form.save(commit=False)
-        self.obj.product_type = _('Blandat lövträd')
+        self.obj.product_type = _('Mixed Hardwood')
         self.obj.save()
         return super().form_valid(self.obj)
 
@@ -35,7 +46,7 @@ class BirchWood(FormView):
 
     def form_valid(self, form):
         self.obj = form.save(commit=False)
-        self.obj.product_type = _('Björkved')
+        self.obj.product_type = _('Birchwood')
         self.obj.save()
         return super().form_valid(self.obj)
 
@@ -47,7 +58,7 @@ class BeechWood(FormView):
 
     def form_valid(self, form):
         self.obj = form.save(commit=False)
-        self.obj.product_type = _('Bokved')
+        self.obj.product_type = _('Beechwood')
         self.obj.save()
         return super().form_valid(self.obj)
 
@@ -59,7 +70,7 @@ class AshWood(FormView):
 
     def form_valid(self, form):
         self.obj = form.save(commit=False)
-        self.obj.product_type = _('Askved')
+        self.obj.product_type = _('Ash Wood')
         self.obj.save()
         return super().form_valid(self.obj)
 
@@ -71,7 +82,7 @@ class Other(FormView):
 
     def form_valid(self, form):
         self.obj = form.save(commit=False)
-        self.obj.product_type = _('Övrigt')
+        self.obj.product_type = _('Other')
         self.obj.save()
         return super().form_valid(self.obj)
 

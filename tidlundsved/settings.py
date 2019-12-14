@@ -4,15 +4,12 @@ from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-try:
-    from tidlundsved.secret import *
-except ImportError as e:
-    pass
-
 PRODUCTION = False
 
-if (PRODUCTION):
+SECRET_KEY = os.environ['SECRET_KEY']
+ANYMAIL_KEY = os.environ['ANYMAIL_KEY']
+
+if PRODUCTION:
     try:
         from tidlundsved.settings_prod import *
     except ImportError as e:
@@ -25,7 +22,6 @@ else:
 
 
 WSGI_APPLICATION = 'tidlundsved.wsgi.application'
-SECRET_KEY = KEY
 ROOT_URLCONF = 'tidlundsved.urls'
 
 INSTALLED_APPS = [
@@ -108,5 +104,5 @@ DEFAULT_FROM_EMAIL = 'noreply@tidlundsved.se'
 
 ANYMAIL = {
     'MAILGUN_API_KEY': ANYMAIL_KEY,
-    'MAILGUN_SENDER_DOMAIN': 'mail.tidlundsved.se',
+    'MAILGUN_SENDER_DOMAIN': 'mg2.tidlundsved.se',
 }

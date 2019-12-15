@@ -13,5 +13,5 @@ DATABASES = {
 }
 
 EMAIL_SEND_TO = 'mjovanc@protonmail.com'
-EMAIL_SEND_FROM = 'noreply@tidlundsved.se'
+EMAIL_SEND_FROM = 'noreply@mg2.tidlundsved.se'
 LIST_OF_EMAIL_RECIPIENTS = ['mjovanc@protonmail.com']

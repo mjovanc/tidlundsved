@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Not finished nor tested
+
 # This is used when deploying the application on production server
 exec &> log.txt
 

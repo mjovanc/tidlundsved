@@ -100,7 +100,8 @@ STATIC_ROOT = '/home/mjovanc/tv/venv/project_files/static/'
 STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
-DEFAULT_FROM_EMAIL = 'noreply@tidlundsved.se'
+DEFAULT_FROM_EMAIL = 'noreply@mg2.tidlundsved.se'
+SERVER_EMAIL = "info@mg2.tidlundsved.se"
 
 ANYMAIL = {
     'MAILGUN_API_KEY': ANYMAIL_KEY,

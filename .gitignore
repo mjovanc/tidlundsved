@@ -103,9 +103,5 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# Secret stuff
-tidlundsved/settings_prod.py
-tidlundsved/secret.py
-
 # Pycharm
 .idea

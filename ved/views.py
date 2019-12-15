@@ -1,145 +1,91 @@
-from django.template.response import TemplateResponse
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import FormView
+from django.utils.translation import gettext_lazy as _
+from django.urls import reverse_lazy
+from django.core.mail import send_mail
 from django.conf import settings
-from .forms import *
-from .functions import send_email, send_order_verification
-from .models import Product
+from ved.forms import *
 
 
-def index(request):
-    return TemplateResponse(request, 'index.html')
+class Contact(FormView):
+    template_name = 'contact.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('ovrigt')
+
+    def form_valid(self, form):
+        message = "{name} / {email} said: ".format(
+            name=form.cleaned_data.get('name'),
+            email=form.cleaned_data.get('email'))
+        message += "\n\n{0}".format(form.cleaned_data.get('message'))
+
+        send_mail(
+            subject=form.cleaned_data.get('message').strip(),
+            message=message,
+            from_email=settings.EMAIL_SEND_FROM,
+            recipient_list=settings.LIST_OF_EMAIL_RECIPIENTS,
+        )
+        return super().form_valid(form)
 
 
-def about(request):
-    return TemplateResponse(request, 'about.html')
+class MixedHardWood(FormView):
+    template_name = 'ved/mixed-hardwood.html'
+    form_class = OrderFormMixedHardWood
+    success_url = reverse_lazy('contact')
+
+    def form_valid(self, form):
+        self.obj = form.save(commit=False)
+        self.obj.product_type = _('Mixed Hardwood')
+        self.obj.save()
+        return super().form_valid(self.obj)
 
 
-def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            message = form.cleaned_data['message']
-            sender = form.cleaned_data['sender']
-            cc_myself = form.cleaned_data['cc_myself']
+class BirchWood(FormView):
+    template_name = 'ved/birchwood.html'
+    form_class = OrderFormBirchWood
+    success_url = reverse_lazy('contact')
 
-            if 'cc_myself' in request.POST:
-                send_email('Tidlundsved.se - Kontaktformulär', message, settings.EMAIL_SEND_TO, sender)
-
-            send_email('Tidlundsved.se - Kontaktformulär', message, sender, settings.EMAIL_SEND_TO)
-            return TemplateResponse(request, 'various/mail.html')
-    else:
-        form = ContactForm()
-    return TemplateResponse(request, 'contact.html', {'form': form})
+    def form_valid(self, form):
+        self.obj = form.save(commit=False)
+        self.obj.product_type = _('Birchwood')
+        self.obj.save()
+        return super().form_valid(self.obj)
 
 
-def blandat_lovtrad(request):
-    if request.method == 'POST':
-        form = OrderFormLovTrad(request.POST)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.product_type = 'Blandat lövträd'
-            obj.save()
+class BeechWood(FormView):
+    template_name = 'ved/beechwood.html'
+    form_class = OrderFormBeechWood
+    success_url = reverse_lazy('contact')
 
-            send_order_verification(obj)
-
-            return TemplateResponse(request, 'various/success.html', {'ORDER_ID': obj.pk})
-    else:
-        form = OrderFormLovTrad()
-    return TemplateResponse(request, 'ved/blandat_lovtrad.html',
-        {
-            'form': form,
-            'wood': Product.objects.all().filter(ptype='Blandat lövträd')
-        }
-    )
+    def form_valid(self, form):
+        self.obj = form.save(commit=False)
+        self.obj.product_type = _('Beechwood')
+        self.obj.save()
+        return super().form_valid(self.obj)
 
 
-def bjorkved(request):
-    if request.method == 'POST':
-        form = OrderFormBjorkved(request.POST)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.product_type = 'Björkved'
-            obj.save()
+class AshWood(FormView):
+    template_name = 'ved/ashwood.html'
+    form_class = OrderFormAshWood
+    success_url = reverse_lazy('contact')
 
-            send_order_verification(obj)
-
-            return TemplateResponse(request, 'various/success.html',
-                                    {'ORDER_ID': obj.pk})
-    else:
-        form = OrderFormBjorkved()
-    return TemplateResponse(request, 'ved/bjorkved.html', 
-        {
-            'form': form,
-            'wood': Product.objects.all().filter(ptype='Björkved')
-        }
-    )
+    def form_valid(self, form):
+        self.obj = form.save(commit=False)
+        self.obj.product_type = _('Ash Wood')
+        self.obj.save()
+        return super().form_valid(self.obj)
 
 
-def bokved(request):
-    if request.method == 'POST':
-        form = OrderFormBokved(request.POST)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.product_type = 'Bokved'
-            obj.save()
+class Other(FormView):
+    template_name = 'ved/other.html'
+    form_class = OrderFormOther
+    success_url = reverse_lazy('success')
 
-            send_order_verification(obj)
-
-            return TemplateResponse(request, 'various/success.html',
-                                    {'ORDER_ID': obj.pk})
-    else:
-        form = OrderFormBokved()
-    return TemplateResponse(request, 'ved/bokved.html', 
-        {
-            'form': form,
-            'wood': Product.objects.all().filter(ptype='Bokved')
-        }
-    )
+    def form_valid(self, form):
+        self.obj = form.save(commit=False)
+        self.obj.product_type = _('Other')
+        self.obj.save()
+        return super().form_valid(self.obj)
 
 
-def askved(request):
-    if request.method == 'POST':
-        form = OrderFormAskved(request.POST)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.product_type = 'Askved'
-            obj.save()
-
-            send_order_verification(obj)
-
-            return TemplateResponse(request, 'various/success.html',
-                                    {'ORDER_ID': obj.pk})
-    else:
-        form = OrderFormAskved()
-    return TemplateResponse(request, 'ved/askved.html', 
-        {
-            'form': form,
-            'wood': Product.objects.all().filter(ptype='Askved')
-        }
-    )
-
-
-def ovrigt(request):
-    if request.method == 'POST':
-        form = OrderFormOther(request.POST)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.product_type = 'Övrigt'
-            obj.save()
-
-            send_order_verification(obj)
-
-            return TemplateResponse(request, 'various/success.html',
-                                    {'ORDER_ID': obj.pk})
-    else:
-        form = OrderFormOther()
-    return TemplateResponse(request, 'ved/ovrigt.html',  
-        {
-            'form': form,
-            'wood': Product.objects.all().filter(ptype='Övrigt')
-        }
-    )
-
-
-def success(request):
-    return TemplateResponse(request, 'various/success.html')
+class Success(TemplateView):
+    template_name = 'various/success.html'

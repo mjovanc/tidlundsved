@@ -1,11 +1,11 @@
 {% extends "index.html" %}
 {% load static i18n %}
 
-{% block site_title_meta %} - {% trans "Other" %}{% endblock %}
-{% block page_title %}{% trans "Other" %}{% endblock %}
+{% block site_title_meta %} - {% trans "Mixed Hardwood" %}{% endblock %}
+{% block page_title %}{% trans "Mixed Hardwood" %}{% endblock %}
 
 {% block page_media %}
-<img src="{% static 'img/ved/bestalla/ovrigt.jpg' %}" alt="övrigt" class="img-thumbnail">
+<img src="{% static 'img/ved/blandved.png' %}" alt="blandved" class="img-thumbnail">
 <div class="prices">
     <h4>{% trans "Prices" %}</h4>
 
@@ -19,16 +19,15 @@
 
 {% block page_content %}
 
+<div class="alert alert-warning" role="alert">
+  {% trans "For purchasing with delivery, please contact us after sending the order." %}
+</div>
+
 <form method="post" novalidate>
   {% csrf_token %}
 
   {% for field in form.visible_fields %}
     <div class="form-group">
-        {% if field.errors %}
-        <div class="alert alert-danger" role="alert">
-            {{ field.errors }}
-        </div>
-        {% endif %}
       {{ field.label_tag }}
       {{ field }}
       {% if field.help_text %}

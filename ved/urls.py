@@ -1,14 +1,12 @@
 from django.urls import path, include
+from ved.views import Contact, MixedHardWood, BirchWood, BeechWood, AshWood, Other
 
-from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('om-oss/', views.about, name='about'),
-    path('kontakt/', views.contact, name='contact'),
-    path('ved/blandat', views.blandat_lovtrad, name='blandat_lovtrad'),
-    path('ved/bjork', views.bjorkved, name='bjorkved'),
-    path('ved/bok', views.bokved, name='bokved'),
-    path('ved/ask', views.askved, name='askved'),
-    path('ved/ovrigt', views.ovrigt, name='ovrigt'),
+    path('kontakt/', Contact.as_view(), name='contact'),
+    path('ved/blandat', MixedHardWood.as_view(), name='blandat_lovtrad'),
+    path('ved/bjork', BirchWood.as_view(), name='bjorkved'),
+    path('ved/bok', BeechWood.as_view(), name='bokved'),
+    path('ved/ask', AshWood.as_view(), name='askved'),
+    path('ved/ovrigt', Other.as_view(), name='ovrigt'),
 ]

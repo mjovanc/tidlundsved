@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-19 21:24+0200\n"
+"POT-Creation-Date: 2019-12-14 13:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: MARCUS CVJETICANIN <MJOVANC@PROTONMAIL.COM>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,60 +18,109 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: settings/admin.py:9
+#: settings/admin.py:9 settings/models.py:12
+msgid "Setting"
+msgstr "Inställningar"
+
+#: settings/admin.py:10 settings/models.py:13
+msgid "Settings"
+msgstr "Inställningar"
+
+#: settings/models.py:6
 msgid "Sitewide Notice"
-msgstr ""
+msgstr "Sidnotiser"
 
-#: settings/admin.py:10
-msgid "Sitewide Notices"
-msgstr ""
+#: templates/about.html:4 templates/index.html:63
+msgid "About Us"
+msgstr "Om oss"
 
-#: settings/models.py:6 ved/models.py:48
-msgid "Title"
-msgstr "Titel"
+#: templates/about.html:5
+msgid "About Tidlunds ved"
+msgstr "Om Tidlunds ved"
 
-#: tidlundsved/settings.py:90
-msgid "Swedish"
-msgstr "Svenska"
+#: templates/contact.html:4 templates/contact.html:5
+msgid "Contact Us"
+msgstr "Kontakta oss"
 
-#: tidlundsved/settings.py:91
-msgid "English"
-msgstr "Engelska"
-
-#: ved/forms.py:17
-msgid "First name and last name"
-msgstr "Förnamn och efternamn"
-
-#: ved/forms.py:18
-msgid "This field is required"
-msgstr "Detta fält är ett krav"
-
-#: ved/forms.py:21
-msgid "Enter a correct E-Mail address"
-msgstr "Ange en korrekt e-post adress"
-
-#: ved/forms.py:23 ved/models.py:22
-msgid "Phone Number"
-msgstr "Telefonnummer"
-
-#: ved/forms.py:28
-msgid "Address"
-msgstr "Adress"
-
-#: ved/forms.py:70 ved/forms.py:78 ved/models.py:20 ved/models.py:39
-msgid "Name"
-msgstr "Namn"
-
-#: ved/forms.py:71 ved/forms.py:80 ved/models.py:21
-#: ved/templates/contact.html:15
+#: templates/contact.html:15 ved/forms.py:93 ved/models.py:21
 msgid "E-Mail"
 msgstr "E-post"
 
-#: ved/forms.py:72
+#: templates/contact.html:15
+msgid "Phone"
+msgstr "Telefon"
+
+#: templates/contact.html:30
+msgid "Send"
+msgstr "Skicka"
+
+#: templates/index.html:47
+msgid "Firewood"
+msgstr "Ved"
+
+#: templates/index.html:50 templates/index.html:125
+#: ved/templates/ved/mixed-hardwood.html:4
+#: ved/templates/ved/mixed-hardwood.html:5 ved/views.py:25
+msgid "Mixed Hardwood"
+msgstr "Blandat lövträd"
+
+#: templates/index.html:51 templates/index.html:118
+#: ved/templates/ved/birchwood.html:4 ved/templates/ved/birchwood.html:5
+#: ved/views.py:37
+msgid "Birchwood"
+msgstr "Björkved"
+
+#: templates/index.html:52 templates/index.html:104
+#: ved/templates/ved/beechwood.html:4 ved/templates/ved/beechwood.html:5
+#: ved/views.py:49
+msgid "Beechwood"
+msgstr "Bokved"
+
+#: templates/index.html:53 templates/index.html:111
+#: ved/templates/ved/ashwood.html:4 ved/templates/ved/ashwood.html:5
+#: ved/views.py:61
+msgid "Ash Wood"
+msgstr "Askved"
+
+#: templates/index.html:54 ved/templates/ved/other.html:4
+#: ved/templates/ved/other.html:5 ved/views.py:73
+msgid "Other"
+msgstr "Övrigt"
+
+#: templates/index.html:71
+msgid "Contact"
+msgstr "Kontakt"
+
+#: templates/index.html:172
+msgid "Created by"
+msgstr "Skapad av"
+
+#: templates/index.html:178
+msgid "Powered by:"
+msgstr "Drivs av:"
+
+#: tidlundsved/settings.py:87
+msgid "Swedish"
+msgstr "Svenska"
+
+#: tidlundsved/settings.py:88
+msgid "English"
+msgstr "Engelska"
+
+#: ved/forms.py:57 ved/forms.py:64 ved/forms.py:71 ved/forms.py:78
+#: ved/forms.py:85 ved/models.py:24
+msgid "Choice"
+msgstr "Val"
+
+#: ved/forms.py:92 ved/models.py:20 ved/models.py:39
+msgid "Name"
+msgstr "Namn"
+
+#: ved/forms.py:94
 msgid "Message"
 msgstr "Meddelande"
 
-#: ved/forms.py:73
+#: ved/forms.py:95
 msgid "Copy to E-mail"
 msgstr "Kopia till mail"
 
@@ -103,13 +152,13 @@ msgstr "Påbörjad"
 msgid "Delivered"
 msgstr "Levererad"
 
+#: ved/models.py:22
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
 #: ved/models.py:23 ved/models.py:51
 msgid "Type"
 msgstr "Typ"
-
-#: ved/models.py:24
-msgid "Choice"
-msgstr "Val"
 
 #: ved/models.py:25
 msgid "Quantity (cubic/piece)"
@@ -135,9 +184,9 @@ msgstr "Betala med"
 msgid "Order Status"
 msgstr "Orderstatus"
 
-#: ved/models.py:34 ved/templates/ved/askved.html:35
-#: ved/templates/ved/bjorkved.html:36 ved/templates/ved/blandat_lovtrad.html:35
-#: ved/templates/ved/bokved.html:35 ved/templates/ved/ovrigt.html:40
+#: ved/models.py:34 ved/templates/ved/ashwood.html:39
+#: ved/templates/ved/beechwood.html:39 ved/templates/ved/birchwood.html:40
+#: ved/templates/ved/mixed-hardwood.html:39 ved/templates/ved/other.html:44
 msgid "Order"
 msgstr "Beställ"
 
@@ -157,6 +206,10 @@ msgstr "Erbjudande"
 msgid "Offers"
 msgstr "Erbjudanden"
 
+#: ved/models.py:48
+msgid "Title"
+msgstr "Titel"
+
 #: ved/models.py:49
 msgid "Description"
 msgstr "Beskrivning"
@@ -173,85 +226,43 @@ msgstr "Produkt"
 msgid "Products"
 msgstr "Produkter"
 
-#: ved/templates/about.html:4 ved/templates/index.html:63
-msgid "About Us"
-msgstr "Om oss"
-
-#: ved/templates/about.html:5
-msgid "About Tidlunds ved"
-msgstr "Om Tidlunds ved"
-
-#: ved/templates/contact.html:4 ved/templates/contact.html:5
-msgid "Contact Us"
-msgstr "Kontakta oss"
-
-#: ved/templates/contact.html:15
-msgid "Phone"
-msgstr "Telefon"
-
-#: ved/templates/contact.html:30
-msgid "Send"
-msgstr "Skicka"
-
-#: ved/templates/index.html:47
-msgid "Firewood"
-msgstr "Ved"
-
-#: ved/templates/index.html:50 ved/templates/index.html:125
-#: ved/templates/ved/blandat_lovtrad.html:4
-#: ved/templates/ved/blandat_lovtrad.html:5
-msgid "Mixed Hardwood"
-msgstr "Blandat lövträd"
-
-#: ved/templates/index.html:51 ved/templates/index.html:118
-#: ved/templates/ved/bjorkved.html:4 ved/templates/ved/bjorkved.html:5
-msgid "Birchwood"
-msgstr "Björkved"
-
-#: ved/templates/index.html:52 ved/templates/index.html:104
-#: ved/templates/ved/bokved.html:4 ved/templates/ved/bokved.html:5
-msgid "Beechwood"
-msgstr "Bokved"
-
-#: ved/templates/index.html:53 ved/templates/index.html:111
-#: ved/templates/ved/askved.html:4 ved/templates/ved/askved.html:5
-msgid "Ash Wood"
-msgstr "Askved"
-
-#: ved/templates/index.html:54 ved/templates/ved/ovrigt.html:4
-#: ved/templates/ved/ovrigt.html:5
-msgid "Other"
-msgstr "Övrigt"
-
-#: ved/templates/index.html:71
-msgid "Contact"
-msgstr "Kontakt"
-
-#: ved/templates/index.html:159
-msgid "Created by"
-msgstr "Skapad av"
-
-#: ved/templates/index.html:161
-msgid "Powered by:"
-msgstr "Drivs av:"
-
 #: ved/templates/order.html:4 ved/templates/order.html:5
 msgid "Order Firewood"
 msgstr "Beställ ved"
 
-#: ved/templates/various/mail.html:4 ved/templates/various/mail.html:5
+#: ved/templates/ved/ashwood.html:10 ved/templates/ved/beechwood.html:10
+#: ved/templates/ved/birchwood.html:10 ved/templates/ved/mixed-hardwood.html:10
+#: ved/templates/ved/other.html:10
+msgid "Prices"
+msgstr "Priser"
+
+#: ved/templates/ved/ashwood.html:23 ved/templates/ved/beechwood.html:23
+#: ved/templates/ved/birchwood.html:23 ved/templates/ved/mixed-hardwood.html:23
+#: ved/templates/ved/other.html:23
+msgid ""
+"For purchasing with delivery, please contact us after sending the order."
+msgstr "För köp med leverans, ta kontakt med oss direkt efter beställning."
+
+#: ved/templates/ved/various/mail.html:4 ved/templates/ved/various/mail.html:5
 msgid "Thank you for your E-Mail!"
 msgstr "Tack för ditt mail!"
 
-#: ved/templates/various/success.html:4 ved/templates/various/success.html:5
+#: ved/templates/ved/various/success.html:4
+#: ved/templates/ved/various/success.html:5
 msgid "Thank you for your order!"
 msgstr "Tack för din order!"
 
-#: ved/templates/ved/askved.html:10 ved/templates/ved/bjorkved.html:10
-#: ved/templates/ved/blandat_lovtrad.html:10 ved/templates/ved/bokved.html:10
-#: ved/templates/ved/ovrigt.html:10
-msgid "Prices"
-msgstr "Priser"
+#~ msgid "First name and last name"
+#~ msgstr "Förnamn och efternamn"
+
+#~ msgid "This field is required"
+#~ msgstr "Detta fält är ett krav"
+
+#~ msgid "Enter a correct E-Mail address"
+#~ msgstr "Ange en korrekt e-post adress"
+
+#~ msgid "Address"
+#~ msgstr "Adress"
 
 #, fuzzy
 #~| msgid "Beechwood"

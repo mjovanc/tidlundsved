@@ -19,6 +19,10 @@
 
 {% block page_content %}
 
+<div class="alert alert-warning" role="alert">
+  {% trans "For purchasing with delivery, please contact us after sending the order." %}
+</div>
+
 <form method="post" novalidate>
   {% csrf_token %}
 

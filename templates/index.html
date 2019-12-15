@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>{{ SITE_TITLE }}{% block site_title_meta %}{% endblock %}</title>
-        <meta name="description" content="">
+        <meta name="description" content="Tidlunds ved är ett skånskt företag som ligger i Veberöd på romeleåsens sluttning. Vi förädlar ved till lösved, 1 m3 kubiks säckar samt 40 liters småsäckar.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/favicon/apple-icon-57x57.png' %}">
@@ -87,9 +87,9 @@
     <img src="{% static 'img/firewood.jpg' %}" class="img-fluid firewood-img" alt="Responsive image">
     {% endif %}
 
-    {% if SITEWIDE_NOTICE.title %}
+    {% if SETTING.sitewide_notice %}
     <div class="alert alert-warning" role="alert">
-        {{ SITEWIDE_NOTICE.title }}
+        {{ SETTING.sitewide_notice }}
     </div>
     {% endif %}
 
@@ -134,10 +134,10 @@
             {% block page_content_wide %}{% endblock %}
 
             <div class="row">
-                <div class="col">
+                <div class="col-sm-6 col-xs-6 col-md-6">
                   {% block page_media %}{% endblock %}
                 </div>
-                <div class="col">
+                <div class="col-sm-6 col-xs-6 col-md-6">
                   {% block page_content %}{% endblock %}
                 </div>
 
@@ -166,8 +166,14 @@
 
     <nav class="navbar fixed-bottom navbar-light bg-light navbar-footer">
         <div class="container">
-                <div class="col-8">
+            <div class="row">
+
+                <div class="col-4">
                     <a class="navbar-brand footer-navbar-text-created-by float-left" href="https://www.linkedin.com/in/marcuscvjeticanin/">{% trans "Created by" %} Marcus Cvjeticanin</a>
+                </div>
+
+                <div class="col-8">
+
                     <div class="navbar-brand footer-navbar-text-created-by float-right" href="https://www.linkedin.com/in/marcuscvjeticanin/">
                         {% trans "Powered by:" %}
                         <a href="https://www.python.org/" target="_blank">
@@ -179,9 +185,12 @@
                         <a href="https://github.com/mjovanc/tidlundsved" target="_blank">
                             <img src="{% static 'img/github.png' %}" class="footer-icons" alt="Github" height="25">
                         </a>
+
                     </div>
+
                 </div>
             </div>
-</nav>
+        </div>
+    </nav>
 </footer>
 </html>

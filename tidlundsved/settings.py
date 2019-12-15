@@ -4,27 +4,24 @@ from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-try:
-    from .secret import *
-except ImportError as e:
-    pass
-
 PRODUCTION = False
 
-if (PRODUCTION):
+SECRET_KEY = os.environ['SECRET_KEY']
+ANYMAIL_KEY = os.environ['ANYMAIL_KEY']
+
+if PRODUCTION:
     try:
-        from .settings_prod import *
+        from tidlundsved.settings_prod import *
     except ImportError as e:
         pass
 else:
     try:
-        from .settings_dev import *
+        from tidlundsved.settings_dev import *
     except ImportError as e:
         pass
 
 
 WSGI_APPLICATION = 'tidlundsved.wsgi.application'
-SECRET_KEY = KEY
 ROOT_URLCONF = 'tidlundsved.urls'
 
 INSTALLED_APPS = [
@@ -52,7 +49,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -62,7 +59,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'ved.context_processors.offerings',
                 'ved.context_processors.site_title',
-                'settings.context_processors.settings',
+                'settings.context_processors.get_settings',
             ],
         },
     },
@@ -85,7 +82,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SITE_TITLE = 'Tidlunds ved'
 
-LANGUAGE_CODE = 'sv'
+LANGUAGE_CODE = 'en'
 LANGUAGES = [
   ('sv', _('Swedish')),
   ('en', _('English')),
@@ -99,13 +96,14 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_ROOT = '/home/marcus/tv/tidlundsved/static/'
+STATIC_ROOT = '/home/mjovanc/tv/venv/project_files/static/'
 STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
-DEFAULT_FROM_EMAIL = 'noreply@tidlundsved.se'
+DEFAULT_FROM_EMAIL = 'noreply@mg2.tidlundsved.se'
+SERVER_EMAIL = "info@mg2.tidlundsved.se"
 
 ANYMAIL = {
     'MAILGUN_API_KEY': ANYMAIL_KEY,
-    'MAILGUN_SENDER_DOMAIN': 'mail.tidlundsved.se',
+    'MAILGUN_SENDER_DOMAIN': 'mg2.tidlundsved.se',
 }

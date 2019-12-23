@@ -1,4 +1,4 @@
-# Tidlunds ved 
+# Tidlunds ved
 
 ## About
 
@@ -11,9 +11,13 @@ The web application for Tidlunds ved uses:
 * Python 3.5+
 * Django web framework 2.2
 
+## Screenshot
+
+![Tidlunds ved](tidlundsved-screenshot.png)
+
 ## License
 
-The license is MIT. You are free to do whatever you want with it, if you want to speed up the processes of building a very simple order system or similar. Please let me know if find it useful for some project. 
+The license is MIT. You are free to do whatever you want with it, if you want to speed up the processes of building a very simple order system or similar. Please let me know if find it useful for some project.
 
 ## Contributing
 
